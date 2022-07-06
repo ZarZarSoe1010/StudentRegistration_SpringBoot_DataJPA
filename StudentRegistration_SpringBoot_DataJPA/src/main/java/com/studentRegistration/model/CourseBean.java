@@ -7,7 +7,16 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.stereotype.Component;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 @Component
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity @Table(name="course")
 public class CourseBean {
 	@Id
@@ -19,35 +28,6 @@ public class CourseBean {
 	@NotEmpty
 	private String name;
 	
-	public String getCid() {
-		return cid;
-	}
-
-	public void setCid(String cid) {
-		this.cid = cid;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	public CourseBean() {
-	}
-
-	public CourseBean(@NotEmpty String cid, @NotEmpty String name) {
-		super();
-		this.cid = cid;
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return "CourseBean [cid=" + cid + ", name=" + name + "]";
-	}
-
 	
 
 	

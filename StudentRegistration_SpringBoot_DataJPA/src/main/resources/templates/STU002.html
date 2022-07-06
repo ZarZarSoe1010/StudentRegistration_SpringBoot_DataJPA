@@ -55,8 +55,8 @@
 							ID</label>
 						<div class="col-md-4">
 							<input type="text" class="form-control" id="studentID"
-								th:field="*{id}" readonly="readonly" /> <label th:if="${#fields.hasErrors('id')}"
-								th:errors="*{id}" style="color: red;">Error</label>
+								th:field="*{sid}" readonly="readonly" /> <label th:if="${#fields.hasErrors('sid')}"
+								th:errors="*{sid}" style="color: red;">Error</label>
 						</div>
 					</div>
 					<div class="row mb-4">
@@ -130,9 +130,9 @@
 						<legend class="col-form-label col-md-2 pt-0">Attend</legend>
 						<div class="col-md-4">
 							<div class="form-check-inline">
-								<span th:each="data: ${stuBean.courses}"> <input
-									type="checkbox" class="form-check-input"
-									th:field="*{stuCourse}" th:value="${data.id}" /> <span th:text="${data.name}"></span>
+								<span th:each="data: ${courseList}"> 
+									<input type="checkbox" class="form-check-input"
+										th:field="*{courses}" th:value="${data.cid}" th:text="${data.name}"/> 
 								</span>
 							</div>
 						</div>
@@ -146,7 +146,7 @@
 
 							<button type="submit" class="btn btn-secondary mb-2">Update</button>
 
-							<a th:href="@{/deleteStudent(selectedStudentId=${stuBean.id})}">
+							<a th:href="@{/deleteStudent(selectedStudentId=${stuBean.sid})}">
 								<button type="button" class="btn btn-danger"
 									data-bs-toggle="modal" data-bs-target="#exampleModal">
 									<span>Delete</span>

@@ -68,12 +68,12 @@
 						<tbody>
 							<tr th:each="data: ${stuList}">
 								<td th:text="${dataStat.index+1}" />
-								<td th:text="${data.id}" />
+								<td th:text="${data.sid}" />
 								<td th:text="${data.name}" />
 								<td>
-								<span th:each="stuCourse: ${data.stuCourse}" th:text="${stuCourse}+','"></span>
+								<span th:each="stuCourse: ${data.courses}" th:text="${stuCourse.name}+','"></span>
 								</td>
-								<td><a th:href="@{/seeMore(selectedStudentId=${data.id})}"><button
+								<td><a th:href="@{/seeMore(selectedStudentId=${data.sid})}"><button
 											type="button" class="btn btn-secondary mb-2">See
 											More</button></a></td>
 							</tr>

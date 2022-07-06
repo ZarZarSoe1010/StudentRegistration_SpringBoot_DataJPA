@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.studentRegistration.dto.UserDTO;
+import com.studentRegistration.model.UserBean;
+
 
 @Service
 @Transactional
@@ -13,14 +14,14 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public int insertUser(UserDTO userDto) {
+	public int insertUser(UserBean userBean) {
 		int result=0;
-		userRepository.save(userDto);
+		userRepository.save(userBean);
 		return result;
 	}
-	public int updateUser(UserDTO userDto) {
+	public int updateUser(UserBean userBean) {
 		int result=0;
-		userRepository.save(userDto);
+		userRepository.save(userBean);
 		return result;
 	}
 	public int deleteUser(String userId) {
@@ -28,15 +29,15 @@ public class UserService {
 		userRepository.deleteById(userId);
 		return result;
 	}
-	public List<UserDTO>selectAllUser(){
-		List<UserDTO>userList=(List<UserDTO>)userRepository.findAll();
+	public List<UserBean>selectAllUser(){
+		List<UserBean>userList=(List<UserBean>)userRepository.findAll();
 		return userList;	
 	}
-	public UserDTO selectOneUser(String userId) {
-		return userRepository.findUserDTOByUid(userId);	
+	public UserBean selectOneUser(String userId) {
+		return userRepository.findByUid(userId);	
 	}
-	public List<UserDTO> selectByFilter(String userId,String userName){
-		return userRepository.selectByFilter(userId,userName);
+	public List<UserBean> selectByFilter(String userId,String userName){
+		return userRepository.findByUidOrName(userId, userName);
 	}
 
 }

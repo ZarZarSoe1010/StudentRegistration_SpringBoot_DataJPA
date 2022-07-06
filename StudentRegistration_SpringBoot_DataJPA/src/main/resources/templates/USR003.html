@@ -66,10 +66,10 @@
 					</thead>
 					<tbody>
 						<tr th:each="data: ${userList}">
-							<td th:text="${data.id}" />
+							<td th:text="${data.uid}" />
 							<td th:text="${data.name}" />
 							<td><a
-								th:href="@{/setupUpdateUser(selectedUserId=${data.id})}">
+								th:href="@{/setupUpdateUser(selectedUserId=${data.uid})}">
 									<button type="button" class="btn btn-success ">Update
 									</button>
 							</a></td>
@@ -81,7 +81,7 @@
 		                <c:set var="not_delete" value=""></c:set>
 		                </c:otherwise>
 		                </c:choose>		   -->
-							<td><a th:href="@{/deleteUser(selectedUserId=${data.id})}">
+							<td><a th:href="@{/deleteUser(selectedUserId=${data.uid})}">
 									<button type="button" class="btn btn-secondary mb-3"
 										data-bs-toggle="modal">Delete</button>
 							</a></td>
@@ -89,24 +89,7 @@
 					</tbody>
 				</table>
 
-				<!--      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Student Deletion</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        
-                         <h5 style="color: rgb(127, 209, 131);">Are you sure want to delete !</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success col-md-2" data-bs-dismiss="modal">Ok</button>
-    
-                    </div>
-                </div>
-            </div>
-        </div> -->
+			
 			</div>
 		</div>
 	</div>

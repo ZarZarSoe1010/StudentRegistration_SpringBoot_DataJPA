@@ -15,7 +15,7 @@
 			</div> 
 				<div th:if="${msg}" th:text="${msg}"></div>	
 			<form class="login-form" th:action="@{/login}" name="confirm" method="post"  th:object="${userBean}" >
-				<input type="text" placeholder="User Id" th:field="*{id}" />
+				<input type="text" placeholder="User Id" th:field="*{uid}" />
 				<input type="password" placeholder="Password" name="password" />		
 				<input type="submit" value="Login">
 				<p class="message">

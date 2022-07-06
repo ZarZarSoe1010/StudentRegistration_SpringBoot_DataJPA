@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.studentRegistration.dao.UserService;
-import com.studentRegistration.dto.UserDTO;
 import com.studentRegistration.model.UserBean;
 
 
@@ -34,8 +33,8 @@ public class LoginLogoutController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date(System.currentTimeMillis());
 		String currentDate = formatter.format(date);		
-		List<UserDTO> userResList = userService.selectAllUser();
-		for (UserDTO userInfo : userResList) {
+		List<UserBean> userResList = userService.selectAllUser();
+		for (UserBean userInfo : userResList) {
 			if (userInfo.getUid().equals(userBean.getUid()) && userInfo.getPassword().equals(userBean.getPassword())) {
 				session.setAttribute("userInfo", userInfo);
 				session.setAttribute("date", currentDate);			
