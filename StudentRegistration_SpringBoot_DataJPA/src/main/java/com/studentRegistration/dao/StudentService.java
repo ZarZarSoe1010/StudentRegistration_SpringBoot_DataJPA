@@ -1,5 +1,4 @@
 package com.studentRegistration.dao;
-
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +35,9 @@ public class StudentService {
     }
 
     public List<StudentBean> selectStudentListByIdOrNameOrCourse(String stuId, String stuName, String courseName) {
-        String id = !stuId.isBlank() ? stuId : ("%/][");
-        String name = !stuName.isBlank() ? stuName : ("%%");
-        String course = !courseName.isBlank() ? courseName : ("%%");
+         String id = !stuId.isBlank() ? stuId : ("%%");
+         String name = !stuName.isBlank() ? stuName : ("%%");
+         String course = !courseName.isBlank() ? courseName : ("%%");
         return stuRepository.findDistinctBySidContainingOrNameContainingOrCourses_NameContaining(id, name, course);
 
     }

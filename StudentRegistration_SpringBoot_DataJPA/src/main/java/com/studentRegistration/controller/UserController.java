@@ -19,6 +19,7 @@ import com.studentRegistration.model.UserBean;
 public class UserController {
 	@Autowired
 	private UserService userService;
+
 	@RequestMapping(value = "/userManagement", method = RequestMethod.GET)
 	public String UserManagement(ModelMap model) {
 		return "USR003";
@@ -47,17 +48,14 @@ public class UserController {
 			String userId = String.format("USR%03d", tempId);
 			userBean.setUid(userId);
 		}
-		
-		int i = userService.insertUser(userBean);
-	
-			model.addAttribute("msg", "Register Successful !!");
-		
+		userService.insertUser(userBean);
+		model.addAttribute("msg", "Register Successful !!");
 		model.addAttribute("userBean", new UserBean());
 		return "USR001";
 	}
 
 	@RequestMapping(value = "/setupUpdateUser", method = RequestMethod.GET)
-	public ModelAndView setupUpdateUser(@RequestParam("selectedUserId")String id) {	
+	public ModelAndView setupUpdateUser(@RequestParam("selectedUserId") String id) {
 		UserBean userBean = userService.selectOneUser(id);
 		return new ModelAndView("USR002", "userBean", userBean);
 	}
@@ -68,26 +66,21 @@ public class UserController {
 		if (bs.hasErrors()) {
 			return "USR002";
 		}
-		int i = userService.updateUser(userBean);
-
+		userService.updateUser(userBean);
 		if (!userBean.getPassword().equals(userBean.getCpwd())) {
 			model.addAttribute("msg", "Passwords do not match !!");
 			return "USR002";
 		}
-	
-			model.addAttribute("msg", "Update Successful!!");
-	
+		model.addAttribute("msg", "Update Successful!!");
 		return "USR002";
 	}
 
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-	public String deleteUser(@RequestParam("selectedUserId")String id, ModelMap model) {
-		int i = userService.deleteUser(id);
-		if (i > 0) {
-			model.addAttribute("msg", "Delete Successful");
-		} else {
-			model.addAttribute("msg", "Delete Fail");
-		}
+	public String deleteUser(@RequestParam("selectedUserId") String id, ModelMap model) {
+		userService.deleteUser(id);
+
+		model.addAttribute("msg", "Delete Successful");
+
 		return "redirect:/searchUser?id=&name=";
 	}
 
@@ -97,18 +90,14 @@ public class UserController {
 		if (uid.isBlank() && uname.isBlank()) {
 			userBeanList = userService.selectAllUser();
 		} else {
-			userBeanList = userService.selectByFilter(uid,uname);
+			userBeanList = userService.selectByFilter(uid, uname);
 		}
 		if (userBeanList.size() == 0) {
 			model.addAttribute("msg", "User not found!!");
-		} 
-		
+		}
+
 		model.addAttribute("userList", userBeanList);
 		return "USR003";
 	}
 
-	
-	
-	
-	
 }

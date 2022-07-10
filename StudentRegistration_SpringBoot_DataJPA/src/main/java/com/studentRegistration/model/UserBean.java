@@ -32,9 +32,5 @@ public class UserBean {
 	private String cpwd;
 	@Column(name="user_role")
 	@NotEmpty
-	private String userRole;
-	
-
-	
-	
+	private String userRole;	
 }
