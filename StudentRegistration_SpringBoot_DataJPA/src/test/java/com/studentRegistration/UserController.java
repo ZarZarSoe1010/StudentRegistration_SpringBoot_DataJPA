@@ -98,7 +98,27 @@ public class UserController {
     }
 
     @Test
+    public void testSearchUserIfBlank() throws Exception {
+        UserBean userBean = new UserBean("USR001", "zz", "zz@gmail", "pass", "pass", "User");
+        List<UserBean> userList = new ArrayList<UserBean>();
+        userList.add(userBean);
+        when(userService.selectAllUser()).thenReturn(userList);
+
+        this.mockMvc.perform(get("/searchUser")
+                .param("id", "")
+                .param("name", ""))
+                .andExpect(status().isOk())
+                .andExpect(view().name("USR003"))
+                .andExpect(model().attributeExists("userList"));
+    }
+
+    @Test
     public void testSearchUser() throws Exception {
+        UserBean userBean = new UserBean("USR001", "zz", "zz@gmail", "pass", "pass", "User");
+        List<UserBean> userList = new ArrayList<UserBean>();
+        userList.add(userBean);
+        when(userService.selectByFilter("USR001","ZZ")).thenReturn(userList);
+
         this.mockMvc.perform(get("/searchUser")
                 .param("id", "USR001")
                 .param("name", "ZZ"))
