@@ -36,9 +36,9 @@ public class StudentController {
 
 		List<StudentBean> stuList = studentService.selectAllStudent();
 		StudentBean stuBean = new StudentBean();
-		if (stuList == null) {
-			stuList = new ArrayList<>();
-		}
+		// if (stuList == null) {
+		// 	stuList = new ArrayList<>();
+		// }
 		if (stuList.size() == 0) {
 			stuBean.setSid("STU001");
 		} else {
@@ -61,9 +61,9 @@ public class StudentController {
 		model.addAttribute("msg", "Register Successful");
 		stuBean = new StudentBean();
 		List<StudentBean> stuList = studentService.selectAllStudent();
-		if (stuList == null) {
-			stuList = new ArrayList<>();
-		}
+		// if (stuList == null) {
+		// 	stuList = new ArrayList<>();
+		// }
 		if (stuList.size() == 0) {
 			stuBean.setSid("STU001");
 		} else {

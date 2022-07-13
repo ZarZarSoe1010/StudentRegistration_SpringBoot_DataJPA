@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.studentRegistration.dao.UserService;
 import com.studentRegistration.model.UserBean;
-
-
-
 @Controller
 public class LoginLogoutController {
 	@Autowired

@@ -40,6 +40,7 @@ public class UserController {
 			model.addAttribute("userBean", userBean);
 			return "USR001";
 		}
+		
 		List<UserBean> userList = userService.selectAllUser();
 		if (userList.size() == 0) {
 			userBean.setUid("USR001");

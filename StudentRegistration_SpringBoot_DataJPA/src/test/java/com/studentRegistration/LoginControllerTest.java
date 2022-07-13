@@ -76,7 +76,14 @@ public class LoginControllerTest {
 
     // @Test
     // public void sessionTest()throws Exception{
-
+    //     Map<String, Object> sessionObj=new HashMap<String, Object>();
+    //     UserBean userBean = new UserBean("USR001", "zz", "zz@gmail", "pass", "pass", "User");
+    //     sessionObj.put("login_user", userBean);
+    //      this.mockMvc.perform(get("/").sessionAttrs(sessionObj))
+    //      .andExpect(status().isOk())
+    //      .andExpect(view().name("")) 
+    //      .andExpect( model().attributeExists(""));
     // }
+    
 
 }

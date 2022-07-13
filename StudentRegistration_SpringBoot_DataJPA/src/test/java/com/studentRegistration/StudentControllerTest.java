@@ -3,7 +3,6 @@ package com.studentRegistration;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -103,6 +102,20 @@ public class StudentControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("STU003"))
                 .andExpect(model().attributeExists("stuList"));
+    }
+
+    @Test
+    public void TestIdAutoIncrease() throws Exception {
+        StudentBean stuBean = getStudent();
+        List<StudentBean>stuList=new ArrayList<>();
+        stuList.add(stuBean);
+        when(stuService.selectAllStudent()).thenReturn(stuList);
+
+        this.mockMvc.perform(get("/setupRegisterStudent").flashAttr("stuBean", stuBean))
+                .andExpect(status().isOk())
+                .andExpect(view().name("STU001"))
+                .andExpect(model().attributeExists("stuBean"));
+
     }
 
     private List<CourseBean> getCourseList() {
